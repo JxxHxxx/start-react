@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import GroupList from "./component/Group";
+import GoogleLoginButton from "./component/Login";
+
+
+function Hello(props) {
+  console.log('props', props, props.name)
+
+  return <h1>Hello {props.title}</h1>
+}
+
+function Member(props) {
+  const lis = []
+
+  console.log(props.topics)
+  props.topics.map(t => lis.push(<li key={t.id}>{t.title}</li>))
+
+  return <ol>
+    {lis}
+  </ol>
+}
+
+function Article(props) {
+  return <article>
+    <h2>{props.title}</h2>
+    {props.body}
+  </article>
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <GoogleLoginButton />
+      <GroupList />
     </div>
   );
 }
